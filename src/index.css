@@ -1,68 +1,111 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  /* font-weight: 400; */
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; */
+
+  /* Dark mode */
+  --text-color-light: rgba(255, 255, 255, 0.87);
+  --background-color-dark: #242424;
+
+  /* Light mode */
+  --text-color-dark: #2A303C;
+  --background-color-light: whitesmoke;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+  height: 100vh;
+  width: 100%;
+  padding: 0;
   margin: 0;
+}
+
+
+#root,
+html,
+body {
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* #root {
+  text-align: center;
+  max-width: 1280px;
+  padding: 2rem;
+  margin: 0 auto;
+} */
+
+/* body {
   display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+} */
+
+.dark-mode {
+  /* color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; */
+
+  color: var(--text-color-light);
+  background-color: var(--background-color-dark);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.light-mode {
+  /* color: #2A303C;
+  background-color: whitesmoke; */
+
+  color: var(--text-color-dark);
+  background-color: var(--background-color-light);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+/* Typography and icons */
 
-@media (prefers-color-scheme: light) {
+
+/* Layout */
+
+
+/* Buttons */
+
+
+/* Images */
+
+
+/* Links */
+
+
+/* Media queries */
+
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: whitesmoke;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+} */
+
+/* @media (width >= 600px) */
+@media (min-width: 600px) {
+  /* Typography and icons */
+
+
+  /* Layout */
+
+
+  /* Buttons */
+
+
+  /* Images */
+
+
+  /* Links */
+
 }
