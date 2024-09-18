@@ -2,7 +2,7 @@
 
 ## Overview
 
-Overview.
+Content collaboration and approval platform. Git for content making.
 
 ## Features
 

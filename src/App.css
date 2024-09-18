@@ -17,6 +17,16 @@
   padding: 0;
 }
 
+.upload-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
 /* Buttons */
 
 
