@@ -27,11 +27,36 @@
   margin: 0 auto;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form label,
+.input-file {
+  display: block;
+}
+
+.uploaded-file-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 /* Buttons */
 
 
 /* Images */
 
+.uploaded-image {
+  width: 100%;
+  border-radius: 0.5rem;
+}
 
 /* Links */
 
@@ -45,6 +70,9 @@
 
   /* Layout */
 
+  .uploaded-file-container {
+    width: 60%;
+  }
 
   /* Buttons */
 
