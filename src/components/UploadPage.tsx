@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react"
+import { useState, ChangeEvent, MouseEvent } from "react"
 
 function UploadPage() {
     const [formData, setFormData] = useState({
@@ -20,6 +20,10 @@ function UploadPage() {
         }
     }
 
+    function handleButtonClick(event: MouseEvent<HTMLButtonElement>) {
+        event.preventDefault()
+    }
+
     return (
         <div className="upload-page">
             <h2 className="upload-page-title">
@@ -38,7 +42,8 @@ function UploadPage() {
                     />
                 </label>
                 <button
-                    className="upload-button">
+                    className="upload-button"
+                    onClick={handleButtonClick}>
                     Upload
                 </button>
             </form>
