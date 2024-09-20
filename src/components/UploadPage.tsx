@@ -39,6 +39,7 @@ function UploadPage() {
                         type="file"
                         onChange={handleChange}
                         name="file"
+                        aria-label="Upload file"
                     />
                 </label>
                 <button
