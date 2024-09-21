@@ -5,7 +5,9 @@ function GoldenHour() {
         location: "",
     })
 
-    const [goldenHourTime, setGoldenHourTime] = useState(7)
+    const [sunsetTime, setSunsetTime] = useState(7)
+
+    const goldenHourTime = sunsetTime - 1
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target
@@ -60,6 +62,7 @@ function GoldenHour() {
             <div className="golden-hour-result-container">
                 <p className="golden-hour-result-text">
                     You can see the golden hour at {goldenHourTime} pm
+                    - {sunsetTime} pm
                     {/* {goldenHourTime > 12 ? "pm" : "am"} */}
                 </p>
                 {formData.location && (<p>
