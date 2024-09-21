@@ -54,11 +54,12 @@ function GoldenHour() {
         console.log(location)
     }, [])
 
+    // Refactor this useEffect to maybe not use an async function
     // useEffect(() => {
     //     async () => {
     //         try {
     //           const apiKey = "YOUR_API_KEY" // Replace with your OpenWeatherMap API key
-    //           const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${formData.city}&limit=1&appid=${apiKey}`)
+    //           const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${formData.city}&limit=1&appid=${apiKey}`)
               
     //           if (response.data.length > 0) {
     //             const { lat, lon } = response.data[0]
