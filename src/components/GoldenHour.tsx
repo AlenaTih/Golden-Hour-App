@@ -9,6 +9,8 @@ import {
 function GoldenHour() {
     const [formData, setFormData] = useState({
         city: "",
+        longitude: 0,
+        latitude: 0,
     })
 
     const [sunsetTime, setSunsetTime] = useState(0)
@@ -41,6 +43,11 @@ function GoldenHour() {
 
         const currentTime = new Date().getHours()
         console.log(currentTime)
+
+        setLocation({
+            longitude: formData.longitude,
+            latitude: formData.latitude
+        })
     }
 
     useEffect(() => {
@@ -51,7 +58,7 @@ function GoldenHour() {
             })
         })
 
-        console.log(location)
+        // console.log(location)
     }, [])
 
     // Refactor this useEffect to maybe not use an async function
@@ -76,6 +83,7 @@ function GoldenHour() {
     // useEffect(() => {
     //     // Use the longitude and latitude to get the sunset time from the OpenWeatherMap API
     //     const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&exclude=minutely,hourly,alerts&appid=${API key}`
+    //     const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${formData.latitude}&lon=${formData.longitude}&exclude=minutely,hourly,alerts&appid=${API key}`
 
     //     fetch(url)
     //         .then(response => response.json())
@@ -114,6 +122,30 @@ function GoldenHour() {
                         placeholder="Your city"
                         name="city"
                         value={formData.city}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label htmlFor="longitude-input">
+                    Longitude
+                    <input
+                        className="longitude-input"
+                        id="longitude-input"
+                        type="text"
+                        placeholder="Your longitude"
+                        name="longitude"
+                        value={formData.longitude}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label htmlFor="latitude-input">
+                    Latitude
+                    <input
+                        className="latitude-input"
+                        id="latitude-input"
+                        type="text"
+                        placeholder="Your latitude"
+                        name="latitude"
+                        value={formData.latitude}
                         onChange={handleChange}
                     />
                 </label>
