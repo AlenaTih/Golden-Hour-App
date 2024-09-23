@@ -1,8 +1,12 @@
-# Bulilder App
+# Golden Hour App
 
 ## Overview
 
-Content collaboration and approval platform. Git for content making.
+<!-- Content collaboration and approval platform. Git for content making. -->
+
+An app to identify when you will have this beautiful time of golden hour in your location.
+
+Golden hour is the time during 1 hour before sunset. You can take the most awesome photos during this time, and just get pleasure watching the colors of the sky.
 
 ## Features
 
@@ -22,11 +26,13 @@ Content collaboration and approval platform. Git for content making.
 - TypeScript
 - React Router
 - Appwrite
+- OpenWeatherMap API
+- Geocoding API
 - Font Awesome CDN
 
 ## API
 
-This project uses the [API](link) to fetch information.
+This project uses the [OpenWeatherMap API](https://openweathermap.org/current) to fetch sunset information and [Geocoding API](https://openweathermap.org/api/geocoding-api) to fetch the geocoordinates information.
 
 ## Database
 
