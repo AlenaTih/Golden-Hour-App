@@ -9,8 +9,6 @@ import axios from "axios"
 function GoldenHour() {
     const [formData, setFormData] = useState({
         city: "",
-        // longitude: 0,
-        // latitude: 0,
     })
 
     const [sunsetTime, setSunsetTime] = useState(0)
@@ -87,15 +85,11 @@ function GoldenHour() {
 
     useEffect(() => {
         // Use the longitude and latitude to get the sunset time from the OpenWeatherMap API
-        // const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&exclude=minutely,hourly,alerts&appid=${API key}`
-        // const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${formData.latitude}&lon=${formData.longitude}&exclude=minutely,hourly,alerts&appid=${API key}`
-
         if (location.latitude > 0 && location.longitude > 0) {
             const url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${apiKey}`
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    // const unixSunsetTime = data.current.sunset
                     const unixSunsetTime = data.sys.sunset
                     const date = new Date(unixSunsetTime * 1000) // Convert from seconds to milliseconds
                     const sunsetTimeInHours = date.getHours()
@@ -115,7 +109,7 @@ function GoldenHour() {
         //     console.log("Clean up")
         // }
 
-    }, [location, isButtonClicked])
+    }, [location])
 
     return (
         <div className="golden-hour">
@@ -136,30 +130,6 @@ function GoldenHour() {
                         onChange={handleChange}
                     />
                 </label>
-                {/* <label htmlFor="longitude-input">
-                    Longitude
-                    <input
-                        className="longitude-input"
-                        id="longitude-input"
-                        type="text"
-                        placeholder="Your longitude"
-                        name="longitude"
-                        value={formData.longitude}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label htmlFor="latitude-input">
-                    Latitude
-                    <input
-                        className="latitude-input"
-                        id="latitude-input"
-                        type="text"
-                        placeholder="Your latitude"
-                        name="latitude"
-                        value={formData.latitude}
-                        onChange={handleChange}
-                    />
-                </label> */}
 
                 <button
                     className="golden-hour-submit-button"
