@@ -11,6 +11,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("./assets/sunset-new-zealand.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
   width: 100%;
   overflow-x: hidden; /* Prevents horizontal scrolling */
