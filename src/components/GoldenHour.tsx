@@ -124,7 +124,9 @@ function GoldenHour() {
             </p>
 
             <form className="golden-hour-form">
-                <label htmlFor="city-input">
+                <label
+                    className="city-label"
+                    htmlFor="city-input">
                     Type in your city
                     <input
                         className="city-input"

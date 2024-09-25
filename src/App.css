@@ -41,14 +41,29 @@
 .golden-hour-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   gap: 1rem;
+  width: 100%;
+  margin: 2.5rem 0;
 }
 
-.golden-hour-form label,
+/* .golden-hour-form .city-label,
 .city-input {
   display: block;
+} */
+
+.city-label {
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.city-input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border: none;
+  border-radius: 0.5rem;
 }
 
 .golden-hour-result-container {
@@ -61,6 +76,13 @@
 
 /* Buttons */
 
+.golden-hour-submit-button {
+  font-family: inherit;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
 
 /* Images */
 
@@ -79,6 +101,10 @@
   }
 
   /* Layout */
+
+  .golden-hour-form{
+    width: 40%;
+  }
 
   .golden-hour-result-container {
     width: 60%;
