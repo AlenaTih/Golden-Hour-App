@@ -150,12 +150,13 @@ function GoldenHour() {
                 {sunsetTime > 0 && goldenHourTime > 0 && (
                     <p className="golden-hour-result-text">
                         You can see the golden hour 
-                        from {goldenHourTime} to {sunsetTime}
+                        from {goldenHourTime} to {sunsetTime} 
+                        in {formData.city}
                     </p>)}
-                {formData.city && (
+                {/* {formData.city && (
                     <p className="golden-hour-result-text">
                         in {formData.city}
-                </p>)}
+                </p>)} */}
             </div>
         </div>
     )
