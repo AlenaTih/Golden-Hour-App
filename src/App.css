@@ -4,6 +4,13 @@
 
 /* Typography and icons */
 
+.golden-hour-title {
+  margin-top: 2.5rem;
+}
+
+.golden-hour-text {
+  font-weight: 700;
+}
 
 /* Layout */
 
@@ -11,7 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("./assets/sunset-new-zealand.png");
+  background-image: url("./assets/cold-sunset-background.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
