@@ -8,9 +8,22 @@
   margin-top: 2.5rem;
 }
 
-.golden-hour-text {
+.golden-hour-text,
+.golden-hour-result-text {
+  font-size: 1.125rem;
   font-weight: 700;
 }
+
+.golden-hour-result-text {
+  color: whitesmoke;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.golden-hour-result-text:nth-of-type(2) {
+  margin-top: 0;
+}
+
 
 /* Layout */
 
@@ -33,9 +46,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2.5rem;
+  padding: 1rem 1rem 4.5rem;
   width: 100%;
-  margin: 2.5rem auto 0 auto;
+  margin: 0 auto;
 }
 
 .golden-hour-form {
@@ -55,12 +68,14 @@
 
 .city-label {
   font-family: inherit;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 550;
 }
 
 .city-input {
+  font-size: 1rem;
   width: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
   margin: 1rem 0;
   border: none;
   border-radius: 0.5rem;
@@ -72,16 +87,23 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  gap: 1rem;
 }
 
 /* Buttons */
 
 .golden-hour-submit-button {
+  color: inherit;
+  font-size: 1rem;
   font-family: inherit;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+}
+
+.golden-hour-submit-button:hover {
+  background-color: #F2EBDC;
 }
 
 /* Images */

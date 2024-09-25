@@ -120,7 +120,7 @@ function GoldenHour() {
             </p>
 
             <p className="golden-hour-text">
-                Find out when you can see the golden hour in your city
+                Find out when you can see the golden hour in your city.
             </p>
 
             <form className="golden-hour-form">
@@ -152,8 +152,9 @@ function GoldenHour() {
                         You can see the golden hour 
                         from {goldenHourTime} to {sunsetTime}
                     </p>)}
-                {formData.city && (<p>
-                    in {formData.city}
+                {formData.city && (
+                    <p className="golden-hour-result-text">
+                        in {formData.city}
                 </p>)}
             </div>
         </div>
