@@ -136,6 +136,7 @@ function GoldenHour() {
                         name="city"
                         value={formData.city}
                         onChange={handleChange}
+                        required
                     />
                 </label>
 
