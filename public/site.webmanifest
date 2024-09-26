@@ -1,0 +1,12 @@
+{
+    "name": "Golden Hour App",
+    "short_name": "Golden Hour App",
+    "icons":
+        [
+            {"src": "android-chrome-192x192.png", "sizes": "192x192", "type": "image/x-icon"},
+            {"src": "android-chrome-512x512.png", "sizes": "512x512", "type": "image/x-icon"}
+        ],
+    "theme_color":"#F2EBDC",
+    "background_color":"#F2EBDC",
+    "display":"standalone"
+}
