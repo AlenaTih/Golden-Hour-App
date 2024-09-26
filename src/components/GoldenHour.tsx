@@ -38,6 +38,12 @@ function GoldenHour() {
     function handleButtonClick(event: MouseEvent<HTMLButtonElement>) {
         event.preventDefault()
 
+        // Check validity of the form
+        if (!formData.city) {
+            alert("Please type in a city")
+            return
+        }
+
         setIsButtonClicked(true)
 
         // Calculate the timezone offset of the user's system from UTC
