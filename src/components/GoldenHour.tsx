@@ -45,26 +45,7 @@ function GoldenHour() {
         }
 
         setIsButtonClicked(true)
-
-        // Calculate the timezone offset of the user's system from UTC
-        // (Universal Coordinated Time) in hours
-        const userTimeZone = new Date().getTimezoneOffset() / 60
-        console.log(userTimeZone)
-
-        const currentTime = new Date().getHours()
-        console.log(currentTime)
     }
-
-    // useEffect(() => {
-    //     navigator.geolocation.getCurrentPosition(position => {
-    //         setLocation({
-    //             longitude: position.coords.longitude,
-    //             latitude: position.coords.latitude,
-    //         })
-    //     })
-
-    //     // console.log(location)
-    // }, [])
 
     // Refactor this useEffect to maybe not use an async function
     useEffect(() => {
@@ -159,10 +140,6 @@ function GoldenHour() {
                         You can see the golden hour 
                         from {goldenHourTime} to {sunsetTime} in {formData.city}
                     </p>)}
-                {/* {formData.city && (
-                    <p className="golden-hour-result-text">
-                        in {formData.city}
-                </p>)} */}
             </div>
         </div>
     )
