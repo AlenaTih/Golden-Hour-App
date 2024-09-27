@@ -24,6 +24,10 @@
   margin-top: 0;
 }
 
+.footer-text {
+  font-weight: 700;
+  text-align: center;
+}
 
 /* Layout */
 
@@ -85,6 +89,16 @@
   gap: 1rem;
 }
 
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 1rem 4.5rem;
+  margin: auto 0 0;
+}
+
 /* Buttons */
 
 .golden-hour-submit-button {
@@ -106,6 +120,9 @@
 
 /* Links */
 
+.footer-link {
+  color: cornflowerblue;
+}
 
 /* Media queries */
 
@@ -119,7 +136,7 @@
 
   /* Layout */
 
-  .golden-hour-form{
+  .golden-hour-form {
     width: 40%;
   }
 
