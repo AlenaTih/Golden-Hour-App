@@ -8,6 +8,8 @@ The golden hour is the time during one hour before sunset. This is the time when
 
 Please note that the beauty of the golden hour may vary depending on weather conditions and time of year.
 
+Did you know? The blue hour (just before sunrise or after sunset) offers a different, equally desirable light for photography.
+
 ## Features
 
 - **Golden Hour time:** determine when you will have this beautiful time of golden hour in your location.
