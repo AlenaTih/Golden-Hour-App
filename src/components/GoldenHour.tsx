@@ -101,9 +101,9 @@ function GoldenHour() {
     return (
         <div className="golden-hour">
             <p className="golden-hour-text">
-                Golden hour is the time during 1 hour before sunset. 
-                You can take the most awesome photos during this time, 
-                and just get pleasure watching the colors of the sky.
+                Golden hour is the time during one hour before sunset. 
+                This is the time when you can take stunning photos 
+                and just enjoy watching the colors of the sky.
             </p>
 
             <p className="golden-hour-text">
