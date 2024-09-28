@@ -133,14 +133,19 @@ function GoldenHour() {
                         Submit
                 </button>
             </form>
-
-            <div className="golden-hour-result-container">
+            
                 {sunsetTime > 0 && goldenHourTime > 0 && (
-                    <p className="golden-hour-result-text">
-                        You can see the golden hour 
-                        from {goldenHourTime} to {sunsetTime} in {formData.city}
-                    </p>)}
-            </div>
+                    <div className="golden-hour-result-container">
+                        <p className="golden-hour-result-text">
+                            You can see the golden hour 
+                            from {goldenHourTime} to {sunsetTime} in {formData.city}.
+                        </p>
+                        <p className="golden-hour-result-text">
+                            Please note that the beauty of the golden hour 
+                            may vary depending on weather conditions and time of year.
+                        </p>
+                    </div>
+                )}
         </div>
     )
 }

@@ -6,13 +6,16 @@ An app to determine when you will have this beautiful time of golden hour in you
 
 The golden hour is the time during one hour before sunset. This is the time when you can take stunning photos and just enjoy watching the colors of the sky.
 
+Please note that the beauty of the golden hour may vary depending on weather conditions and time of year.
+
 ## Features
 
-- **Feature:** description.
+- **Golden Hour time:** determine when you will have this beautiful time of golden hour in your location.
 
 ## Usage
 
-1. Usage.
+1. Type in your city.
+2. Click the submit button.
 
 ## Technologies Used
 
