@@ -22,6 +22,8 @@ function GoldenHour() {
 
     const [isButtonClicked, setIsButtonClicked] = useState(false)
 
+    const [weatherData, setWeatherData] = useState("")
+
     const apiKey = "8af606c0008cbd969fafbea21b7c4ab6" // My OpenWeatherMap API key
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -82,6 +84,10 @@ function GoldenHour() {
                     const sunsetTimeInHours = date.getHours()
                     console.log(sunsetTimeInHours)
                     setSunsetTime(sunsetTimeInHours)
+
+                    const weatherDescription = data.weather[0].description
+                    // console.log(data)
+                    setWeatherData(weatherDescription)
                 })
                 .catch(error => {
                     console.error(error)
@@ -143,6 +149,9 @@ function GoldenHour() {
                         <p className="golden-hour-result-text">
                             Please note that the beauty of the golden hour 
                             may vary depending on weather conditions and time of year.
+                        </p>
+                        <p className="golden-hour-result-text">
+                            Weather condition today: {weatherData}.
                         </p>
                     </div>
                 )}
