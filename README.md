@@ -12,8 +12,8 @@ Did you know? The blue hour (just before sunrise or after sunset) offers a diffe
 
 ## Features
 
-- **Golden Hour time:** determine when you will have this beautiful time of golden hour in your location today.
-- **Weather Data:** get weather information (a short description) for your location for this day.
+- **Golden hour time:** determine when you will have this beautiful time of golden hour in your location today.
+- **Weather data:** get weather information (a short description) for your location for this day.
 
 ## Usage
 
@@ -28,7 +28,6 @@ Did you know? The blue hour (just before sunrise or after sunset) offers a diffe
 - CSS
 - JavaScript
 - TypeScript
-- React Router
 - OpenWeatherMap API
 - Geocoding API
 
