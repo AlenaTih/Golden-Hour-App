@@ -57,7 +57,7 @@ function GoldenHour() {
               
               if (response.data.length > 0) {
                 const { lat, lon } = response.data[0]
-                console.log(lat, lon)
+                // console.log(lat, lon)
                 setLocation({ latitude: lat, longitude: lon })
               } else {
                 alert("This city is not found")
@@ -82,7 +82,7 @@ function GoldenHour() {
                     const unixSunsetTime = data.sys.sunset
                     const date = new Date(unixSunsetTime * 1000) // Convert from seconds to milliseconds
                     const sunsetTimeInHours = date.getHours()
-                    console.log(sunsetTimeInHours)
+                    // console.log(sunsetTimeInHours)
                     setSunsetTime(sunsetTimeInHours)
 
                     const weatherDescription = data.weather[0].description
@@ -93,7 +93,7 @@ function GoldenHour() {
                     console.error(error)
                 })
                 .finally(() => {
-                    console.log("It worked!")
+                    // console.log("It worked!")
                     setIsButtonClicked(false) // Reset the button click state
                 })
         }
