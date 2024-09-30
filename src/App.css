@@ -21,7 +21,7 @@
 }
 
 .golden-hour-result-text:nth-of-type(2) {
-  margin-top: 0;
+  margin: 0 0 1.125rem;
 }
 
 .footer-text {
@@ -119,6 +119,9 @@
 
 /* Images */
 
+.weather-icon {
+  margin-top: -1rem;
+}
 
 /* Links */
 

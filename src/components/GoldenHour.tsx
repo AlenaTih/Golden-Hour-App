@@ -24,6 +24,8 @@ function GoldenHour() {
 
     const [weatherData, setWeatherData] = useState("")
 
+    const [iconUrl, setIconUrl] = useState("")
+
     const apiKey = "8af606c0008cbd969fafbea21b7c4ab6" // My OpenWeatherMap API key
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -86,8 +88,11 @@ function GoldenHour() {
                     setSunsetTime(sunsetTimeInHours)
 
                     const weatherDescription = data.weather[0].description
-                    // console.log(data)
+                    console.log(data)
                     setWeatherData(weatherDescription)
+	
+                    const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+                    setIconUrl(iconUrl)
                 })
                 .catch(error => {
                     console.error(error)
@@ -153,6 +158,9 @@ function GoldenHour() {
                         <p className="golden-hour-result-text">
                             Weather condition today: {weatherData}.
                         </p>
+                        <img
+                            className="weather-icon"
+                            src={iconUrl} />
                     </div>
                 )}
         </div>
