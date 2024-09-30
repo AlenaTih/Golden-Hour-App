@@ -46,3 +46,7 @@ If you have ideas to enhance this project or encounter any issues, feel free to 
 ## Contact
 
 For inquiries or feedback, please contact me at alyonatihomirova9@gmail.com.
+
+## License
+
+MIT License
