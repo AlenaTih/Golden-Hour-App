@@ -88,7 +88,7 @@ function GoldenHour() {
                     setSunsetTime(sunsetTimeInHours)
 
                     const weatherDescription = data.weather[0].description
-                    console.log(data)
+                    // console.log(data)
                     setWeatherData(weatherDescription)
 	
                     const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
