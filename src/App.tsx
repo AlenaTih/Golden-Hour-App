@@ -1,3 +1,4 @@
+import Header from "./components/Header.tsx"
 import GoldenHour from "./components/GoldenHour.tsx"
 import Footer from "./components/Footer.tsx"
 import "./App.css"
@@ -5,7 +6,7 @@ import "./App.css"
 function App() {
   return (
     <div className="app-container">
-      <h1 className="golden-hour-title">Golden Hour App</h1>
+      <Header />
       <GoldenHour />
       <Footer />
     </div>
