@@ -13,8 +13,6 @@ function GoldenHour() {
 
     const [sunsetTime, setSunsetTime] = useState(0)
 
-    const goldenHourTime = sunsetTime - 1
-
     const [location, setLocation] = useState({
         longitude: 0,
         latitude: 0,
@@ -59,7 +57,6 @@ function GoldenHour() {
               
               if (response.data.length > 0) {
                 const { lat, lon } = response.data[0]
-                // console.log(lat, lon)
                 setLocation({ latitude: lat, longitude: lon })
               } else {
                 alert("This city is not found")
@@ -76,7 +73,7 @@ function GoldenHour() {
 
     useEffect(() => {
         // Use the longitude and latitude to get the sunset time from the OpenWeatherMap API
-        if (location.latitude > 0 && location.longitude > 0) {
+        if (location.latitude && location.longitude) {
             const url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${apiKey}`
             fetch(url)
                 .then(response => response.json())
@@ -84,7 +81,6 @@ function GoldenHour() {
                     const unixSunsetTime = data.sys.sunset
                     const date = new Date(unixSunsetTime * 1000) // Convert from seconds to milliseconds
                     const sunsetTimeInHours = date.getHours()
-                    // console.log(sunsetTimeInHours)
                     setSunsetTime(sunsetTimeInHours)
 
                     const weatherDescription = data.weather[0].description
@@ -98,7 +94,6 @@ function GoldenHour() {
                     console.error(error)
                 })
                 .finally(() => {
-                    // console.log("It worked!")
                     setIsButtonClicked(false) // Reset the button click state
                 })
         }
@@ -147,11 +142,11 @@ function GoldenHour() {
                 </button>
             </form>
             
-                {sunsetTime > 0 && goldenHourTime > 0 && (
+                {sunsetTime && (
                     <div className="golden-hour-result-container">
                         <p className="golden-hour-result-text">
                             You can see the golden hour 
-                            from {goldenHourTime} to {sunsetTime} in {formData.city}.
+                            from {sunsetTime - 1} to {sunsetTime} in {formData.city}.
                         </p>
                         <p className="golden-hour-result-text">
                             Please note that the beauty of the golden hour 
