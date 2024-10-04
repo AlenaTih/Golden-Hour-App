@@ -49,7 +49,6 @@ function GoldenHour() {
         setIsButtonClicked(true)
     }
 
-    // Refactor this useEffect to maybe not use an async function
     useEffect(() => {
         const fetchLocationData = async () => {
             try {
@@ -94,7 +93,7 @@ function GoldenHour() {
                     console.error(error)
                 })
                 .finally(() => {
-                    setIsButtonClicked(false) // Reset the button click state
+                    setIsButtonClicked(false)
                 })
         }
 

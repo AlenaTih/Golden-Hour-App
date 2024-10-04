@@ -1,4 +1,4 @@
-import Header from "./components/Header.tsx"
+// import Header from "./components/Header.tsx"
 import GoldenHour from "./components/GoldenHour.tsx"
 import Footer from "./components/Footer.tsx"
 import BackgroundImage from "./assets/cold-sunset-background.png"
@@ -10,7 +10,7 @@ function App() {
       className="app-container"
       style={{ backgroundImage: `url(${BackgroundImage})`}}
     >
-      <Header />
+      {/* <Header /> */}
       <GoldenHour />
       <Footer />
     </div>
