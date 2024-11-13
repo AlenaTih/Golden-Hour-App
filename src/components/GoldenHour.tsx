@@ -11,7 +11,7 @@ function GoldenHour() {
         city: "",
     })
 
-    const [sunsetTime, setSunsetTime] = useState(0)
+    const [sunsetTime, setSunsetTime] = useState<number | null>(null)
 
     const [location, setLocation] = useState({
         longitude: 0,
