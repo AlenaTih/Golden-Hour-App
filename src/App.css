@@ -6,6 +6,7 @@
 
 .golden-hour-title {
   margin-top: 0;
+  text-shadow: -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .golden-hour-text,
@@ -14,10 +15,17 @@
   font-weight: 700;
 }
 
+.golden-hour-text {
+  text-shadow: -2px -2px 4px rgba(255, 255, 255, 0.5);
+}
+
 .golden-hour-result-text {
   color: whitesmoke;
   text-align: center;
   margin-bottom: 0;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.7), /* subtle dark shadow for depth */
+    -2px -2px 4px rgba(255, 255, 255, 0.5); /* soft white glow for contrast */
 }
 
 .golden-hour-result-text:nth-of-type(2) {
@@ -34,6 +42,7 @@
 .footer-text {
   font-weight: 700;
   text-align: center;
+  text-shadow: -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 /* Layout */
@@ -95,6 +104,7 @@
   font-family: inherit;
   font-size: 1rem;
   font-weight: 550;
+  text-shadow: -2px -2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .city-input {
