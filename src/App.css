@@ -51,8 +51,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to bottom, #EED6D3, #FFB6C1);
-              /* url("./assets/cold-sunset-background.png"); */
+  background-color: linear-gradient(to bottom, #EED6D3, #FFB6C1);
+  background-image: url("./assets/cold-sunset-background.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

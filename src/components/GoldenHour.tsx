@@ -27,6 +27,10 @@ function GoldenHour() {
     const apiKey = "8af606c0008cbd969fafbea21b7c4ab6" // My OpenWeatherMap API key
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
+        event.preventDefault()
+        
+        setSunsetTime(null)
+
         const { name, value } = event.target
 
         setFormData(prevFormData => {
