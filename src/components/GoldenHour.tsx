@@ -21,7 +21,10 @@ function GoldenHour() {
         localTime: null
     })
  
-    const [location, setLocation] = useState<{ longitude: number | null, latitude: number | null }>({
+    const [location, setLocation] = useState<{
+        longitude: number | null,
+        latitude: number | null
+    }>({
         longitude: null,
         latitude: null,
     })
@@ -35,7 +38,7 @@ function GoldenHour() {
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         event.preventDefault()
         
-        // Reset states
+        // Reset state
         setSunsetTime({
             hours: null,
             minutes: null,
@@ -43,6 +46,8 @@ function GoldenHour() {
         })
         setWeatherData("")
         setIconUrl("")
+        setLocation({ latitude: null, longitude: null })
+        setIsButtonClicked(false)
 
         const { name, value } = event.target
 
@@ -65,6 +70,7 @@ function GoldenHour() {
         })
         setWeatherData("")
         setIconUrl("")
+        setLocation({ latitude: null, longitude: null })
     
         // Check validity of the form
         if (!formData.city.trim()) {
@@ -99,6 +105,7 @@ function GoldenHour() {
               }
 
               if (response.data.length > 0) {
+                // console.log(response.data)
                 const { lat, lon } = response.data[0]
                 setLocation({ latitude: lat, longitude: lon })
               } else {
@@ -122,13 +129,13 @@ function GoldenHour() {
                         `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${apiKey}`
                     )
                     
+                    // console.log(response.data)
                     const unixSunsetTime = response.data.sys.sunset
-                    const timezoneOffsetInSeconds = response.data.timezone
                     
-                    const localSunsetTime = new Date((unixSunsetTime + timezoneOffsetInSeconds) * 1000) // Convert from seconds to milliseconds
+                    const sunsetDate = new Date(unixSunsetTime * 1000) // Convert from seconds to milliseconds
                     
-                    // Format the local time
-                    const formattedLocalTime = localSunsetTime.toLocaleString("en-US", {
+                    // Format the local time string with AM/PM and in the local time zone
+                    const formattedLocalTime = sunsetDate.toLocaleString("en-US", {
                         hour: "numeric",
                         minute: "2-digit",
                         hour12: true,
@@ -136,10 +143,12 @@ function GoldenHour() {
                     })
 
                     setSunsetTime({
-                        hours: localSunsetTime.getHours(),
-                        minutes: localSunsetTime.getMinutes(),
+                        hours: sunsetDate.getHours(),
+                        minutes: sunsetDate.getMinutes(),
                         localTime: formattedLocalTime
                     })
+
+                    // console.log(sunsetDate.getHours())
 
                     setWeatherData(response.data.weather[0].description)
                     setIconUrl(`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
@@ -193,13 +202,17 @@ function GoldenHour() {
                 </button>
             </form>
             
-            {sunsetTime.hours && sunsetTime.minutes && sunsetTime.localTime && location.latitude && location.longitude && (
+            {sunsetTime.hours !== null && sunsetTime.minutes !== null && location.latitude && location.longitude && (
                 <div className="golden-hour-result-container">
                     <p className="golden-hour-result-text">
                         You can see the golden hour from 
-                        {` ${sunsetTime.hours - 1}:${(sunsetTime.minutes || 0).toString().padStart(2, "0")}`} to 
-                        {` ${sunsetTime.hours}:${(sunsetTime.minutes || 0).toString().padStart(2, "0")}`} 
-                        {` (${sunsetTime.localTime})`}
+                        {` ${sunsetTime.hours === 0 ? 23 : sunsetTime.hours - 1}:${
+                            (sunsetTime.minutes || 0).toString().padStart(2, "0")
+                        }`} to 
+                        {` ${sunsetTime.hours}:${
+                            (sunsetTime.minutes || 0).toString().padStart(2, "0")
+                        } `} 
+                        {` (${sunsetTime.localTime})`} in {formData.city}.
                     </p>
                     <p className="golden-hour-result-text">
                         Please note that the beauty of the golden hour 
