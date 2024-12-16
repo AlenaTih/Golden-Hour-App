@@ -12,7 +12,7 @@ Did you know? The blue hour (just before sunrise or after sunset) offers a diffe
 
 ## Features
 
-- **Golden hour time:** determine when you will have this beautiful time of golden hour in your location today.
+- **Golden hour time:** determine when you will have the golden hour in your location today.
 - **Weather data:** get weather information (a short description) for your location for this day.
 
 ## Usage
