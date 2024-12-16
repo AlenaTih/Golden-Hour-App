@@ -11,25 +11,38 @@ function GoldenHour() {
         city: "",
     })
 
-    const [sunsetTime, setSunsetTime] = useState<number | null>(null)
-
-    const [location, setLocation] = useState({
-        longitude: 0,
-        latitude: 0,
+    const [sunsetTime, setSunsetTime] = useState<{ hours: number | null, minutes: number | null }>(
+        {
+            hours: null,
+            minutes: null
+        }
+    )
+ 
+    const [location, setLocation] = useState<{ longitude: number | null, latitude: number | null }>({
+        longitude: null,
+        latitude: null,
     })
 
     const [isButtonClicked, setIsButtonClicked] = useState(false)
-
     const [weatherData, setWeatherData] = useState("")
-
     const [iconUrl, setIconUrl] = useState("")
 
-    const apiKey = "8af606c0008cbd969fafbea21b7c4ab6" // My OpenWeatherMap API key
+    // const apiKey = "8af606c0008cbd969fafbea21b7c4ab6" // My OpenWeatherMap API key
+    let apiKey = process?.env.REACT_APP_OPENWEATHER_API_KEY
+    if (!apiKey) {
+        apiKey = "8af606c0008cbd969fafbea21b7c4ab6"
+    }
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         event.preventDefault()
         
-        setSunsetTime(null)
+        // Reset states
+        setSunsetTime({
+            hours: null,
+            minutes: null
+        })
+        setWeatherData("")
+        setIconUrl("")
 
         const { name, value } = event.target
 
@@ -43,24 +56,51 @@ function GoldenHour() {
 
     function handleButtonClick(event: MouseEvent<HTMLButtonElement>) {
         event.preventDefault()
-
+    
+        // Reset states
+        setSunsetTime({
+            hours: null,
+            minutes: null
+        })
+        setWeatherData("")
+        setIconUrl("")
+    
         // Check validity of the form
-        if (!formData.city) {
+        if (!formData.city.trim()) {
             alert("Please type in a city")
             return
         }
-
+    
         setIsButtonClicked(true)
     }
+    
 
     useEffect(() => {
         const fetchLocationData = async () => {
+            if (location.latitude === 0 || location.longitude === 0) {
+                return
+            }
             try {
               const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${formData.city}&limit=1&appid=${apiKey}`)
               
+              if (response.data.length === 0) {
+                alert("City not found. Please try again.")
+                // Reset states
+                setSunsetTime({
+                    hours: null,
+                    minutes: null
+                })
+                setIsButtonClicked(false)
+                setWeatherData("")
+                setIconUrl("")
+                setLocation({ latitude: null, longitude: null })
+                return
+              }
+
               if (response.data.length > 0) {
                 const { lat, lon } = response.data[0]
                 setLocation({ latitude: lat, longitude: lon })
+                // console.log(response.data)
               } else {
                 alert("This city is not found")
               }
@@ -75,37 +115,29 @@ function GoldenHour() {
     }, [formData.city, isButtonClicked])
 
     useEffect(() => {
-        // Use the longitude and latitude to get the sunset time from the OpenWeatherMap API
-        if (location.latitude && location.longitude) {
-            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${apiKey}`
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const unixSunsetTime = data.sys.sunset
+        const fetchWeatherData = async () => {
+            if (location.latitude && location.longitude) {
+                try {
+                    const response = await axios.get(
+                        `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${apiKey}`
+                    )
+                    const unixSunsetTime = response.data.sys.sunset
                     const date = new Date(unixSunsetTime * 1000) // Convert from seconds to milliseconds
-                    const sunsetTimeInHours = date.getHours()
-                    setSunsetTime(sunsetTimeInHours)
-
-                    const weatherDescription = data.weather[0].description
-                    // console.log(data)
-                    setWeatherData(weatherDescription)
-	
-                    const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-                    setIconUrl(iconUrl)
-                })
-                .catch(error => {
-                    console.error(error)
-                })
-                .finally(() => {
+                    setSunsetTime({ hours: date.getUTCHours(), minutes: date.getUTCMinutes() })
+                    setWeatherData(response.data.weather[0].description)
+                    setIconUrl(`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+                } catch (error) {
+                    alert("Failed to fetch weather data. Please try again.")
+                    console.error("Error fetching weather data:", error)
+                } finally {
                     setIsButtonClicked(false)
-                })
+                }
+            }
         }
-
-        // return () => {
-        //     console.log("Clean up")
-        // }
-
-    }, [location])
+    
+        if (isButtonClicked) fetchWeatherData()
+    }, [location, apiKey, isButtonClicked])
+    
 
     return (
         <div className="golden-hour">
@@ -145,11 +177,12 @@ function GoldenHour() {
                 </button>
             </form>
             
-                {sunsetTime && (
+                {sunsetTime.hours && sunsetTime.minutes && location.latitude && location.longitude && (
                     <div className="golden-hour-result-container">
                         <p className="golden-hour-result-text">
-                            You can see the golden hour 
-                            from {sunsetTime - 1} to {sunsetTime} in {formData.city}.
+                            You can see the golden hour from
+                            {` ${sunsetTime.hours - 1}:${sunsetTime.minutes || '00'}`} to 
+                            {` ${sunsetTime.hours}:${sunsetTime.minutes || '00'} UTC`} in {formData.city}.
                         </p>
                         <p className="golden-hour-result-text">
                             Please note that the beauty of the golden hour 
@@ -160,7 +193,9 @@ function GoldenHour() {
                         </p>
                         <img
                             className="weather-icon"
-                            src={iconUrl} />
+                            src={iconUrl}
+                            alt="Weather icon representing today's weather"
+                        />
                     </div>
                 )}
         </div>
