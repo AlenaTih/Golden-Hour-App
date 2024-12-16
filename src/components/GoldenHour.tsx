@@ -27,11 +27,8 @@ function GoldenHour() {
     const [weatherData, setWeatherData] = useState("")
     const [iconUrl, setIconUrl] = useState("")
 
-    // const apiKey = "8af606c0008cbd969fafbea21b7c4ab6" // My OpenWeatherMap API key
-    let apiKey = process?.env.REACT_APP_OPENWEATHER_API_KEY
-    if (!apiKey) {
-        apiKey = "8af606c0008cbd969fafbea21b7c4ab6"
-    }
+    const apiKey = "8af606c0008cbd969fafbea21b7c4ab6" // My OpenWeatherMap API key
+    // let apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         event.preventDefault()
