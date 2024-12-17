@@ -193,7 +193,7 @@ function GoldenHour() {
                         className="city-input"
                         id="city-input"
                         type="text"
-                        placeholder="Your city"
+                        placeholder="Your city, e.g. New York or New York, US"
                         name="city"
                         value={formData.city}
                         onChange={handleChange}
