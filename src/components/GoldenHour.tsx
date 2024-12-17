@@ -29,6 +29,8 @@ function GoldenHour() {
         latitude: null,
     })
 
+    const [country, setCountry] = useState("")
+
     const [isButtonClicked, setIsButtonClicked] = useState(false)
     const [weatherData, setWeatherData] = useState("")
     const [iconUrl, setIconUrl] = useState("")
@@ -47,6 +49,7 @@ function GoldenHour() {
         setWeatherData("")
         setIconUrl("")
         setLocation({ latitude: null, longitude: null })
+        setCountry("")
         setIsButtonClicked(false)
 
         const { name, value } = event.target
@@ -71,6 +74,7 @@ function GoldenHour() {
         setWeatherData("")
         setIconUrl("")
         setLocation({ latitude: null, longitude: null })
+        setCountry("")
     
         // Check validity of the form
         if (!formData.city.trim()) {
@@ -101,13 +105,15 @@ function GoldenHour() {
                 setWeatherData("")
                 setIconUrl("")
                 setLocation({ latitude: null, longitude: null })
+                setCountry("")
                 return
               }
 
               if (response.data.length > 0) {
-                // console.log(response.data)
-                const { lat, lon } = response.data[0]
+                console.log(response.data)
+                const { lat, lon, country } = response.data[0]
                 setLocation({ latitude: lat, longitude: lon })
+                setCountry(country)
               } else {
                 alert("This city is not found")
               }
@@ -202,7 +208,7 @@ function GoldenHour() {
                 </button>
             </form>
             
-            {sunsetTime.hours !== null && sunsetTime.minutes !== null && location.latitude && location.longitude && (
+            {sunsetTime.hours !== null && sunsetTime.minutes !== null && location.latitude && location.longitude && country && (
                 <div className="golden-hour-result-container">
                     <p className="golden-hour-result-text">
                         You can see the golden hour from 
@@ -212,7 +218,8 @@ function GoldenHour() {
                         {` ${sunsetTime.hours}:${
                             (sunsetTime.minutes || 0).toString().padStart(2, "0")
                         } `} 
-                        {` (${sunsetTime.localTime})`} in {formData.city}.
+                        {` (${sunsetTime.localTime})`} in {formData.city}
+                        {formData.city.includes(",") ? null : `, ${country}`}.
                     </p>
                     <p className="golden-hour-result-text">
                         Please note that the beauty of the golden hour 
