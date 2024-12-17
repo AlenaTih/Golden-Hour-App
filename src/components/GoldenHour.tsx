@@ -110,7 +110,7 @@ function GoldenHour() {
               }
 
               if (response.data.length > 0) {
-                console.log(response.data)
+                // console.log(response.data)
                 const { lat, lon, country } = response.data[0]
                 setLocation({ latitude: lat, longitude: lon })
                 setCountry(country)
