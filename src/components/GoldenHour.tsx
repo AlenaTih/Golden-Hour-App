@@ -218,8 +218,8 @@ function GoldenHour() {
                         {` ${sunsetTime.hours}:${
                             (sunsetTime.minutes || 0).toString().padStart(2, "0")
                         } `} 
-                        {` (${sunsetTime.localTime})`} in {formData.city}
-                        {formData.city.includes(",") ? null : `, ${country}`}.
+                        {` (${sunsetTime.localTime})`} in {formData.city.trim()}
+                        {formData.city.includes(",") ? null : `, ${country.trim()}`}.
                     </p>
                     <p className="golden-hour-result-text">
                         Please note that the beauty of the golden hour 
